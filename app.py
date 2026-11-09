@@ -164,11 +164,15 @@ def interpret(text):
         "or impossible quantity: return {\"items\":[],\"budget\":null,\"clarification\":\"A specific question explaining what to change\"}. "
         "If quantities are omitted for named products, use one. This store sells digital demo representations only; no fulfillment."
     )
-    data = request_json(base + "/chat/completions", {
+    payload = {
         "model": os.getenv("LLM_MODEL", "deepseek-flash"),
         "messages": [{"role": "system", "content": system}, {"role": "user", "content": text}],
         "response_format": {"type": "json_object"}, "max_tokens": 800,
-    }, {"Authorization": "Bearer " + key})
+    }
+    if parsed.hostname == "api.deepseek.com":
+        # Current DeepSeek models think by default; extraction needs only JSON.
+        payload["thinking"] = {"type": "disabled"}
+    data = request_json(base + "/chat/completions", payload, {"Authorization": "Bearer " + key})
     try:
         choice = data["choices"][0]
         if choice.get("finish_reason") != "stop":
