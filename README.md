@@ -8,6 +8,8 @@ This is a local hackathon prototype. All products are fictional demo items; ther
 
 **Verified end to end:** a real DeepSeek request and PayPal sandbox create–approve–capture flow completed for **$42.00 USD** on November 9, 2026. See the [validation record](docs/validation.md) for the actual sandbox order and capture references, separately from mock test results.
 
+**[Watch the 90-second English demo on YouTube](https://youtu.be/JzmvarggBVs).** It uses actual browser captures, edited pauses, and synthetic narration.
+
 ## Run in one command
 
 Requires **Python 3.11+** and an internet connection. No pip packages, frontend build, database server, or local model are needed.
