@@ -6,6 +6,8 @@ IntentCart is a lightweight AI shopping assistant built for the 2026 PayPal AI H
 
 This is a local hackathon prototype. All products are fictional demo items; there is no fulfillment. **No real money, real payment accounts at checkout, or real cards are used.** PayPal production endpoints are not configurable.
 
+**Verified end to end:** a real DeepSeek request and PayPal sandbox create–approve–capture flow completed for **$42.00 USD** on November 9, 2026. See the [validation record](docs/validation.md) for the actual sandbox order and capture references, separately from mock test results.
+
 ## Run in one command
 
 Requires **Python 3.11+** and an internet connection. No pip packages, frontend build, database server, or local model are needed.

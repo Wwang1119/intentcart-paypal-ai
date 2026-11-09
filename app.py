@@ -248,7 +248,8 @@ class Store:
                                "category": "DIGITAL_GOODS", "unit_amount": {"currency_code": "USD", "value": i["unit_price"]}}
                               for i in draft["items"]]}],
                 "payment_source": {"paypal": {"experience_context": {
-                    "brand_name": "IntentCart Sandbox", "shipping_preference": "NO_SHIPPING", "user_action": "PAY_NOW",
+                    "brand_name": "IntentCart Sandbox", "locale": "en-US", "landing_page": "LOGIN",
+                    "shipping_preference": "NO_SHIPPING", "user_action": "PAY_NOW",
                     "return_url": origin + "/?checkout=return", "cancel_url": origin + "/?checkout=cancel"}}},
             }
             data = paypal.call("/v2/checkout/orders", payload, "create-" + did)
