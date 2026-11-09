@@ -18,6 +18,10 @@ The model returns product IDs and quantities. Python validates those fields and 
 
 The central challenge was making an AI-generated order trustworthy at the payment boundary. Model output is untrusted input, so the server rejects unknown products, price overrides, malformed quantities, and incomplete responses. Payment retries also need care: stable request IDs, session ownership, and persisted receipts prevent repeated clicks from creating a fresh payment request for the same draft.
 
+## Accomplishments
+
+The complete flow has been exercised with a real DeepSeek request and an actual PayPal sandbox buyer approval and capture. A $42.00 USD payment completed on November 9, 2026, with capture ID `2BK19127YU633970R`. The server verified the capture before rendering its receipt. Separately, all 18 automated contract tests passed; those tests use mocks and are not represented as payment evidence.
+
 ## What we learned
 
 Conversational checkout needs a clear handoff between understanding and authorization. A helpful assistant can translate intent while a deterministic order service owns prices and a human approves the final payment. A successful redirect alone is insufficient evidence of payment; the capture itself must be checked.
