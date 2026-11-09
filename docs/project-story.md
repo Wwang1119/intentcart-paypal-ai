@@ -1,0 +1,31 @@
+## Inspiration
+
+Small shops often receive purchase requests as messages: “Two notebooks and a desk mat, under $45.” Turning that sentence into a checkout normally requires another round of product selection, quantity entry, and price checking. IntentCart explores a short, understandable path from a conversational request to a payment the shopper explicitly approves.
+
+## What it does
+
+IntentCart converts a natural-language request into a structured cart drawn from a small, fixed demo catalog. It displays the exact quantities, catalog prices, USD total, and optional budget check. The shopper reviews the cart, opens PayPal sandbox, approves a simulated payment with a sandbox buyer, and returns for server-side capture verification.
+
+The AI prepares the order; the shopper decides whether to pay. Unknown products and requests exceeding the budget lead to clarification. Success is conditional on a completed PayPal capture whose amount, currency, and order reference match the reviewed draft.
+
+## How we built it
+
+The prototype uses Python's standard library, a plain HTML/CSS/JavaScript interface, SQLite, a cloud DeepSeek model with JSON output, and PayPal's sandbox Orders v2 REST API. It runs locally with one command and needs no third-party Python packages, frontend build step, or local model.
+
+The model returns product IDs and quantities. Python validates those fields and calculates prices with decimal arithmetic from a server-owned catalog. A stored draft ID connects the review screen to order creation. The PayPal integration obtains an OAuth token server-side, creates an order with a sandbox approval link, checks approval, captures the order, and verifies the returned receipt.
+
+## Challenges
+
+The central challenge was making an AI-generated order trustworthy at the payment boundary. Model output is untrusted input, so the server rejects unknown products, price overrides, malformed quantities, and incomplete responses. Payment retries also need care: stable request IDs, session ownership, and persisted receipts prevent repeated clicks from creating a fresh payment request for the same draft.
+
+## What we learned
+
+Conversational checkout needs a clear handoff between understanding and authorization. A helpful assistant can translate intent while a deterministic order service owns prices and a human approves the final payment. A successful redirect alone is insufficient evidence of payment; the capture itself must be checked.
+
+## Scope
+
+This submission is a deliberately focused local sandbox prototype with four fictional products, USD pricing, and one create–approve–capture flow. It has no physical fulfillment, live payment mode, shipping, taxes, or real-money checkout. Automated tests use mocks and are not presented as evidence of a sandbox transaction. The demonstration must show the actual configured provider flow.
+
+## What's next
+
+The next step beyond this hackathon prototype would be connecting the same review-and-approval pattern to a merchant-owned catalog and evaluating it with real shoppers. This is future work; the submitted scope remains the sandbox flow described above.

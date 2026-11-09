@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>IntentCart — From a sentence to a checkout</title>
+  <meta name="description" content="A human-approved AI shopping flow powered by PayPal sandbox.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css"><script defer src="/app.js"></script>
+</head>
+<body>
+  <header><a class="brand" href="/" aria-label="IntentCart home"><span class="brand-icon">i<span>↗</span></span>IntentCart<span class="brand-dot">.</span></a><div class="sandbox"><span></span> SANDBOX ONLY</div></header>
+  <main>
+    <section class="intro"><div class="eyebrow">LESS CLICKING. MORE INTENT.</div><h1>Your next checkout<br>starts with <em>a sentence.</em></h1><p>Tell us what you need. AI builds your cart.<br>You review it, then pay securely in PayPal sandbox.</p></section>
+    <nav class="steps" aria-label="Checkout progress"><div id="step1" class="active"><b>01</b> Describe</div><span>→</span><div id="step2"><b>02</b> Review</div><span>→</span><div id="step3"><b>03</b> Pay & verify</div></nav>
+    <div class="workspace">
+      <section class="composer card" id="compose-section"><div class="section-top"><span class="eyebrow">YOUR SHOPPING ASSISTANT</span><span class="ai-chip">✧ AI</span></div><h2>What’s on your list?</h2><form id="intent-form"><label for="prompt">Describe products, quantities, and an optional USD budget.</label><textarea id="prompt" maxlength="1000" rows="4" placeholder="I need two notebooks and a desk mat, under $45." required></textarea><div class="input-footer"><span id="char-count">0 / 1000</span><span>⌘ + Enter to send</span></div><div class="try-label">TRY A REQUEST</div><div class="examples"><button type="button" data-example="I need two notebooks and a desk mat, under $45.">A fresh desk setup ↗</button><button type="button" data-example="One canvas tote and a pen set, under $30.">Everyday essentials ↗</button></div><button class="primary" type="submit" id="generate">Build my cart <span>↗</span></button></form><div id="notice" role="status" aria-live="polite" hidden></div><div class="human-note"><span class="shield">✓</span><p><strong>You’re in control.</strong> AI prepares the order. Only you approve the checkout.</p></div></section>
+      <section class="review card" aria-labelledby="review-title"><div class="section-top"><span class="eyebrow" id="review-label">YOUR ORDER</span><span class="tiny-pill" id="order-state">AWAITING INTENT</span></div><div id="empty-cart"><div class="cart-illustration" aria-hidden="true"><div class="paper"><span></span><span></span><span></span><b>↗</b></div><span class="spark">✧</span></div><h2 id="review-title">A little intent.<br>A ready-to-pay cart.</h2><p>Your itemized order will appear here.<br>No payment happens automatically.</p><div class="empty-rule"><span>AI understands</span><span>→</span><span>You decide</span></div></div><div id="cart-content" hidden><h2>Check the details.</h2><p class="muted">Prices are verified against our demo catalog.</p><div id="line-items"></div><div class="total-line"><span>Total <small>USD</small></span><strong id="total"></strong></div><p id="budget-note" class="budget-note"></p><p class="payment-copy">Demo items only. No shipping, tax, or real funds.</p><button class="paypal-button" id="pay">Confirm & continue to PayPal <span>→</span></button><p class="secure-copy">Opens PayPal’s sandbox. Use a sandbox buyer account.</p></div><div id="receipt" hidden></div><div id="payment-return" hidden><h2>Verify your payment.</h2><p>We check the actual capture status with PayPal before showing success.</p><button class="primary" id="verify">Verify sandbox payment ↗</button></div></section>
+    </div>
+    <section class="catalog"><div class="catalog-heading"><div><span class="eyebrow">THE DEMO COLLECTION</span><h2>Small catalog. Real checkout flow.</h2></div><span class="catalog-caption">4 demo products · USD · sandbox funds</span></div><div id="catalog-grid" class="catalog-grid"></div></section>
+  </main>
+  <footer><span>IntentCart · Built for the PayPal AI Hackathon</span><span id="connection-state">Checking configuration…</span></footer>
+</body>
+</html>
