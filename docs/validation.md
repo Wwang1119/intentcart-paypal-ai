@@ -17,6 +17,18 @@ The complete local browser flow was tested against the actual DeepSeek API and P
 
 No real money or real cards were used. Credentials and raw local evidence remain outside Git. These sandbox identifiers are test transaction references, not authentication credentials.
 
+## English demonstration recording
+
+A second complete provider test was recorded with an English-language, generated US sandbox personal buyer using PayPal's pre-generated fictional funding method. No real bank/card information was entered.
+
+- Order: `2VF8317785897294A`.
+- Capture: `95802116K4171093R`.
+- Amount: **42.00 USD**.
+- Capture status: **COMPLETED**.
+- Capture time: `2026-11-09T15:50:38Z` (November 9, 23:50:38, GMT+8).
+
+The video uses actual browser captures with edited pauses and synthetic English narration.
+
 ## Offline tests
 
 `python3 -m unittest discover -s tests -v`: **18 passed**.
